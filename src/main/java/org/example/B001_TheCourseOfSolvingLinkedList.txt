@@ -1,0 +1,258 @@
+1. Определим тип АТД:
+LinkedList<T>
+
+2. Сформируем сигнатуры всех методов АТД (без их реализации):
+abstract class LinkedList<T>
+    public void head();
+    public void tail();
+    public void right();
+    public T get();
+    public void put_right(T value);
+    public void put_left(T value);
+    public void clear();
+    public int size();
+    public void add_tail(T value);
+    public void replace(T value);
+    public void find(T value);
+    public void remove_all(T value);
+    public void is_head();
+    public void is_tail();
+    public void is_value();
+
+3. Для каждого метода (при необходимости) задаем набор условий, ограничений на его работу (ПРЕДУСЛОВИЯ)
+    public void head(); // предусловие: список не пустой
+    public void tail(); // предусловие: список не пустой
+    public void right(); // предусловие: список не пустой и есть больше одного значения в списке
+    public T get(); // предусловие: список не пустой
+    public void put_right(T value); // предусловие: список не пустой
+    public void put_left(T value); // предусловие: список не пустой
+    public void clear();
+    public int size();
+    public void add_tail(T value);
+    public void replace(T value); // предусловие: список не пустой
+    public void find(T value); // предусловие: список не пустой
+    public void remove_all(T value); // предусловие: список не пустой
+    public boolean is_head(); // предусловие: список не пустой
+    public boolean is_tail(); // предусловие: список не пустой
+    public boolean is_value();
+
+4. Определим, что в объекте меняется после вызова того или иного метода (ПОСТУСЛОВИЯ)
+    Выпишем функции для которых есть постусловия.
+
+    // предусловие: список не пустой
+    // постусловие: вставляется за текущим узлом новый узел с заданным значением
+    public void put_right(T value);
+
+    // предусловие: список не пустой
+    // постусловие: вставляется перед текущим узлом новый узел с заданным значением
+    public void put_left(T value);
+
+    // постусловие: из списка удаляются все значения
+    public void clear();
+
+    // постусловие: в список добавляется новое значение
+    public void add_tail(T value);
+
+    // предусловие: список не пустой
+    // постусловие: заменено значение текущего узла на заданное
+    public void replace(T value);
+
+    // предусловие: список не пустой
+    // постусловие: в списке удалены все узлы с заданным значением
+    public void remove_all(T value);
+
+5. Конструктор.
+    Объекты создаются вызовом особой функции класса.
+
+    // конструктор
+    public LinkedList<T> LinkedList(); // постусловие: создан пустой список
+
+    // предусловие: список не пустой
+    public void head();
+
+    // предусловие: список не пустой
+    public void tail();
+
+    // предусловие: список не пустой и есть больше одного значения в списке
+    public void right();
+
+    // предусловие: список не пустой
+    public T get();
+
+    // предусловие: список не пустой
+    // постусловие: вставляется за текущим узлом новый узел с заданным значением
+    public void put_right(T value);
+
+    // предусловие: список не пустой
+    // постусловие: вставляется перед текущим узлом новый узел с заданным значением
+    public void put_left(T value);
+
+    // постусловие: из списка удаляются все значения
+    public void clear();
+
+    public int size();
+
+    // постусловие: в список добавляется новое значение
+    public void add_tail(T value);
+
+    // предусловие: список не пустой
+    // постусловие: заменено значение текущего узла на заданное
+    public void replace(T value);
+
+    // предусловие: список не пустой
+    public void find(T value);
+
+    // предусловие: список не пустой
+    // постусловие: в списке удалены все узлы с заданным значением
+    public void remove_all(T value);
+
+    // предусловие: список не пустой
+    public boolean is_head();
+
+    // предусловие: список не пустой
+    public boolean is_tail();
+
+    public boolean is_value();
+
+6. Определим какие функции являются команами а какие запросами (пересмотрим методы)
+
+        public void head(); //запрос (чистая функция)
+        public void tail(); //запрос (чистая функция)
+        public void right(); //запрос (чистая функция)
+        public T get(); //запрос (чистая функция)
+        public void put_right(T value); //команда
+        public void put_left(T value); //команда
+        public void clear(); //команда
+        public int size(); //запрос (чистая функция)
+        public void add_tail(T value); //команда
+        public void replace(T value); //команда
+        public void find(T value); //команда
+        public void remove_all(T value); //команда
+        public boolean is_head(); //запрос (чистая функция)
+        public boolean is_tail(); //запрос (чистая функция)
+        public boolean is_value(); //запрос (чистая функция)
+
+7. Определим отдельные (дополнительные) запросы для статуса команд.
+    Возвращают статус выполнения команд у которых есть ПРЕДУСЛОВИЯ.
+    Выпишем команды имеющие предсловия и требующие дополнительных запросов.
+
+    public void put_right(T value); //команда
+
+    public const int PUT_RIGHT_NIL = 0; // add_tail еще не вызывался
+    public const int PUT_RIGHT_OK = 1; //  последний put_right отработал нормально
+    public const int PUT_RIGHT_ERR = 2; // список пуст
+
+    public void put_left(T value); //команда
+
+    public const int PUT_LEFT_NIL = 0; // add_tail еще не вызывался
+    public const int PUT_LEFT_OK = 1; //  последний put_left отработал нормально
+    public const int PUT_LEFT_ERR = 2; // список пуст
+
+    public void replace(T value); //команда
+
+    public const int REPLACE_NIL = 0; // add_tail еще не вызывался
+    public const int REPLACE_OK = 1; //  последний replace отработал нормально
+    public const int REPLACE_ERR = 2; // список пуст
+
+    public void find(T value); //команда
+
+    public const int FIND_NIL = 0; // add_tail еще не вызывался
+    public const int FIND_OK = 1; //  последний find отработал нормально
+    public const int FIND_ERR = 2; // конец списка (хвост)
+
+    public void remove_all(T value); //команда
+
+    public const int REMOVE_ALL_NIL = 0; // add_tail еще не вызывался
+    public const int REMOVE_ALL_OK = 1; //  последний remove_all отработал нормально
+    public const int REMOVE_ALL_ERR = 2; // узлы с заданным значением отсутствуют
+
+Для add_tail добавим:
+    public const int ADD_TAIL_NIL = 0; // add_tail еще не вызывался
+    public const int ADD_TAIL_OK = 1; //  add_tail выполнился самый первый раз
+
+8. Финальная версия АТД LinkedList
+
+    abstract class LinkedList<T>
+
+        public const int PUT_RIGHT_NIL = 0; // add_tail еще не вызывался
+        public const int PUT_RIGHT_OK = 1; //  последний put_right отработал нормально
+        public const int PUT_RIGHT_ERR = 2; // список пуст
+
+        public const int PUT_LEFT_NIL = 0; // add_tail еще не вызывался
+        public const int PUT_LEFT_OK = 1; //  последний put_left отработал нормально
+        public const int PUT_LEFT_ERR = 2; // список пуст
+
+        public const int REPLACE_NIL = 0; // add_tail еще не вызывался
+        public const int REPLACE_OK = 1; //  последний replace отработал нормально
+        public const int REPLACE_ERR = 2; // список пуст
+
+        public const int FIND_NIL = 0; // add_tail еще не вызывался
+        public const int FIND_OK = 1; //  последний find отработал нормально
+        public const int FIND_ERR = 2; // конец списка (хвост)
+
+        public const int REMOVE_ALL_NIL = 0; // add_tail еще не вызывался
+        public const int REMOVE_ALL_OK = 1; //  последний remove_all отработал нормально
+        public const int REMOVE_ALL_ERR = 2; // узлы с заданным значением отсутствуют
+
+        public const int ADD_TAIL_NIL = 0; // add_tail еще не вызывался
+        public const int ADD_TAIL_OK = 1; //  add_tail выполнился самый первый раз
+
+        //конструктор
+        public LinkedList<T> LinkedList(); // постусловие: создан пустой список
+
+        //команды
+        // предусловие: список не пустой
+        // постусловие: вставляется за текущим узлом новый узел с заданным значением
+        public void put_right(T value);
+
+        // предусловие: список не пустой
+        // постусловие: вставляется перед текущим узлом новый узел с заданным значением
+        public void put_left(T value);
+
+        // постусловие: из списка удаляются все значения
+        public void clear();
+
+        // постусловие: в список добавляется новое значение
+        public void add_tail(T value);
+
+        // предусловие: список не пустой
+        // постусловие: заменено значение текущего узла на заданное
+        public void replace(T value);
+
+        // предусловие: список не пустой
+        public void find(T value);
+
+        // предусловие: список не пустой
+        // постусловие: в списке удалены все узлы с заданным значением
+        public void remove_all(T value);
+
+        //запросы
+        // предусловие: список не пустой
+        public void head();
+
+        // предусловие: список не пустой
+        public void tail();
+
+        // предусловие: справа есть узел
+        public void right();
+
+        // предусловие: список не пустой
+        public T get();
+
+        public int size();
+
+        // предусловие: список не пустой
+        public boolean is_head();
+
+        // предусловие: список не пустой
+        public boolean is_tail();
+
+        public boolean is_value();
+
+        //дополнительные запросы
+        public int put_right_status(); // возвращает значение PUT_RIGHT_*
+        public int put_left_status(); // возвращает значение  PUT_LEFT_*
+        public int replace_status(); // возвращает значение REPLACE_*
+        public int find_status(); // возвращает значение FIND_*
+        public int remove_all_status(); // возвращает значение REMOVE_ALL_*
+        public int add_tail_status(); // возвращает значение  ADD_TAIL_*
