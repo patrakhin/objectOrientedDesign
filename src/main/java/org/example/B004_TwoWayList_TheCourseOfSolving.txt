@@ -73,8 +73,10 @@ abstract class ParentList<T>
   public int get_get_status(); // успешно; список пуст
 
 
+//LinkedList
 abstract class LinkedList<T> extends ParentList{};
 
+//TwoWayList
 abstract class TwoWayList <T> extends ParentList{
 
     // конструктор
