@@ -1,4 +1,4 @@
-
+Рефлексия задания 3.
 
 //LinkedList
 abstract class LinkedList<T> extends ParentList{};
