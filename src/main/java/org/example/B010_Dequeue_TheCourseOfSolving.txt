@@ -1,0 +1,48 @@
+Решение задания 6
+
+Родительский класс выбран Queue, от него наследуется Queue и Dequeue
+
+abstract class ParentQueue<T>
+
+// конструктор
+// постусловие: создана пустая очередь
+  public ParentQueue<T> ParentQueue();
+
+// команды
+// постусловие: в хвост очереди добавлен новый элемент
+  public void enqueue(T value);
+
+// предусловие: очередь не пуста;
+// постусловие: из головы очереди удалён элемент
+  public void dequeue();
+
+// запросы
+// предусловие: очередь не пуста
+  public T get(); // получить элемент из головы очереди;
+
+  public int size(); // текущий размер очереди
+
+  // запросы статусов (возможные значения статусов)
+  public int get_dequeue_status(); // успешно; очередь пуста
+  public int get_get_status(); // успешно; очередь пуста
+
+
+abstract class Queue<T> extends ParentQueue<T>
+//конструктор
+public Queue<T> Queue();
+
+
+abstract class Dequeue<T> extends ParentQueue<T>
+//конструктор
+public Dequeue<T> Dequeue();
+
+//команды
+//постусловие: в голову очереди добавлен новый элемент
+public void add_head(T value);
+
+//запросы
+//предусловие: очередь не пуста
+public T get_tail(); // получаем элемент из хвоста очереди
+
+//запросы статусов
+Public int get_get_tail_status(); //успешно; очередь пуста

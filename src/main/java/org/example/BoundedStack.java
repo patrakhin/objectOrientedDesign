@@ -3,7 +3,7 @@ package org.example;
 import java.util.LinkedList;
 import java.util.Optional;
 
-public class BoundedStack<T> {
+public class BoundedStack<T>  {
     // скрытые поля
     private LinkedList<T> stack; // основное хранилище стека
     private int peek_status; // статус запроса peek()
