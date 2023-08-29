@@ -17,3 +17,5 @@ f
 6src/main/java/org/example/B007_DynArray_Reflection.txt,7/4/74e122efd092c74d5ffbce41c96ebe4e51ef5e22
 o
 ?src/main/java/org/example/B001_TheCourseOfSolvingLinkedList.txt,6/6/665afce7c3570f50979a4846f835d70d1bf23406
+p
+@src/main/java/org/example/B004_TwoWayList_TheCourseOfSolving.txt,5/e/5ef06abeaf2a0fbae945ded45f63545aeea0b459
