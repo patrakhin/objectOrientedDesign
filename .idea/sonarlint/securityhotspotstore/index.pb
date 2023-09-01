@@ -19,3 +19,9 @@ o
 ?src/main/java/org/example/B001_TheCourseOfSolvingLinkedList.txt,6/6/665afce7c3570f50979a4846f835d70d1bf23406
 p
 @src/main/java/org/example/B004_TwoWayList_TheCourseOfSolving.txt,5/e/5ef06abeaf2a0fbae945ded45f63545aeea0b459
+h
+8src/main/java/org/example/B005_TwoWayList_Reflection.txt,8/4/84abe7727b8dead47406cc4afd00134e7b8e8f6e
+k
+;src/main/java/org/example/B008_Queue_TheCourseOfSolving.txt,4/f/4fb181077abf6a667337a67fecdfae67eaca61e3
+n
+>src/main/java/org/example/B006_DynArray_TheCourseOfSolving.txt,e/c/ec57450997247f678778e11f846fa5c56fe4d3cb
