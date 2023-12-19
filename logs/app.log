@@ -1,0 +1,31 @@
+21:52:31.926 [main] INFO  org.example.Main - Hello world!
+22:49:52.068 [main] INFO  org.example.Main - Value of list element: 4
+22:49:52.077 [main] INFO  org.example.Main - Linked List: 
+22:49:52.078 [main] INFO  org.example.LinkedList -  1
+22:49:52.079 [main] INFO  org.example.LinkedList -  
+22:52:57.469 [main] INFO  org.example.Main - Value of list element: 4
+22:56:03.309 [main] INFO  org.example.Main - Linked List: 
+22:56:03.315 [main] INFO  org.example.LinkedList -  1
+22:56:03.318 [main] INFO  org.example.LinkedList -  
+22:56:58.014 [main] INFO  org.example.Main - Value of list element: 4
+23:00:19.499 [main] INFO  org.example.Main - Value of list element: 4
+23:13:22.899 [main] INFO  org.example.Main - Value of list element: 4
+23:13:22.953 [main] INFO  org.example.Main - Linked List: 
+23:13:22.965 [main] INFO  org.example.LinkedList -  1
+23:13:22.966 [main] INFO  org.example.LinkedList -  
+23:24:53.600 [main] INFO  org.example.Main - Value of list element: 4
+23:25:01.640 [main] INFO  org.example.Main - Linked List: 
+23:25:04.270 [main] INFO  org.example.LinkedList -  1
+23:25:04.271 [main] INFO  org.example.LinkedList -  2
+23:25:04.272 [main] INFO  org.example.LinkedList -  3
+23:25:04.274 [main] INFO  org.example.LinkedList -  
+23:30:18.642 [main] INFO  org.example.Main - Value of list element: 
+23:30:18.651 [main] INFO  org.example.Main - Linked List: 
+23:30:18.651 [main] INFO  org.example.LinkedList - 1
+23:30:18.652 [main] INFO  org.example.LinkedList - 2
+23:30:18.652 [main] INFO  org.example.LinkedList - 3
+23:32:18.352 [main] INFO  org.example.Main - Value of list element: 4
+23:32:18.361 [main] INFO  org.example.Main - Linked List: 
+23:32:18.362 [main] INFO  org.example.LinkedList - 1
+23:32:18.362 [main] INFO  org.example.LinkedList - 2
+23:32:18.363 [main] INFO  org.example.LinkedList - 3

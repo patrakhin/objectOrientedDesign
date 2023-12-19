@@ -1,8 +1,4 @@
 
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#src/main/java/org/example/Main.java,0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 V
 &src/main/java/org/example/SomeOne.java,9/0/90350a478de42bc522f70697512bb1241eb6f186
 h
@@ -23,3 +19,11 @@ k
 ;src/main/java/org/example/B008_Queue_TheCourseOfSolving.txt,4/f/4fb181077abf6a667337a67fecdfae67eaca61e3
 n
 >src/main/java/org/example/B006_DynArray_TheCourseOfSolving.txt,e/c/ec57450997247f678778e11f846fa5c56fe4d3cb
+n
+>src/main/java/org/example/B015_NativeDictionary_Reflection.txt,d/4/d48b1fbec93cf0efc6c9e7b61dd3a08d854a74d4
+o
+?src/main/java/org/example/B012_HashTable_TheCourseOfSolving.txt,6/9/69a25af74c53398157f493a335add905d26ffe4c
+v
+Fsrc/main/java/org/example/B014_NativeDictionary_TheCourseOfSolving.txt,2/8/28a9947034926358dc9b7d0901749eaabd3b9897
+n
+>src/main/java/org/example/B016_PowerSet_TheCourseOfSolving.txt,4/e/4e6c18a9663eece256cf6026ddbd60aaf76cc67e
