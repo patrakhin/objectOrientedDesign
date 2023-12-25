@@ -30,7 +30,7 @@ class ElectricKettleWithThermostat extends ElectricKettle {
     }
 }
 
-public class InheritanceExample {
+public class С002_InheritanceExample {
     public static void main(String[] args) {
         // Использование расширенного класса-наследника
         ElectricKettleWithIndicator kettleWithIndicator = new ElectricKettleWithIndicator();
