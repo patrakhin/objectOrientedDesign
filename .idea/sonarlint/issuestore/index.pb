@@ -19,3 +19,11 @@ k
 ;src/main/java/org/example/B008_Queue_TheCourseOfSolving.txt,4/f/4fb181077abf6a667337a67fecdfae67eaca61e3
 n
 >src/main/java/org/example/B006_DynArray_TheCourseOfSolving.txt,e/c/ec57450997247f678778e11f846fa5c56fe4d3cb
+[
++src/main/java/org/example/BoundedStack.java,9/1/91f543c28331d26d49ae4ea3efaa0b1ebb913251
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+S
+#src/main/java/org/example/Main.java,0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b
+`
+0src/main/java/org/example/InsertionSortStep.java,5/8/580f90d0e5e048341038608d4ebddff188af351b
