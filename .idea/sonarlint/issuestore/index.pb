@@ -23,7 +23,5 @@ n
 +src/main/java/org/example/BoundedStack.java,9/1/91f543c28331d26d49ae4ea3efaa0b1ebb913251
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-S
-#src/main/java/org/example/Main.java,0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 `
 0src/main/java/org/example/InsertionSortStep.java,5/8/580f90d0e5e048341038608d4ebddff188af351b
