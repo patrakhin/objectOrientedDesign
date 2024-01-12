@@ -1,0 +1,131 @@
+Рефлексия задания 7
+Суть решения отражена верно. Но было бы еще наглядней, при полной реализации по эталонному примеру.
+Лучше видно иерархию классов, наследование выполняется в несколько уровней (Родитель->Наследник->НаследникНаследника).
+Выполняется принцип открытости/закрытости и это можно легко заметить,
+так каждый наследник выполняет расширение родительского класса и в то же время специализирует метод в своей реализации.
+В результате, при создании полиморфа (expression), создается динамическое связывание
+и появляется возможность реализации метода в зависимости от контекста задачи.
+Соответственно, модернизируем решение:
+
+class Weapon {
+    public void fire() {
+        System.out.println("Выстрел из общего типа оружия");
+    }
+}
+
+class Pistol extends Weapon {
+    @Override
+    public void fire() {
+        System.out.println("Выстрел из пистолета");
+    }
+}
+
+
+class MachinePistol extends Pistol {
+    @Override
+    public void fire() {
+        System.out.println("Выстрел из пистолета-пулемета");
+    }
+}
+
+
+public class DynamicBindingExample {
+    public static void main(String[] args) {
+        Weapon weapon = new MachinePistol();
+        weapon.fire(); // Выстрел из пистолета=пулемета
+    }
+}
+
+
+Решение задания 8.
+
+// Пример с ковариантностью: контейнер оружие
+class Container<T> {
+    private T weapon;
+
+    public Container(T weapon) {
+        this.weapon = weapon;
+    }
+
+    public T getWeapon() {
+        return weapon;
+    }
+}
+
+class Weapon {
+    public void fire() {
+        System.out.println("Выстрел из оружия");
+    }
+}
+
+class Gun extends Weapon {
+    @Override
+    public void fire() {
+        System.out.println("Выстрел из пистолета");
+    }
+
+    public void reload() {
+        System.out.println("Перезарядка пистолета");
+    }
+}
+
+public class CovariantExample {
+    public static void main(String[] args) {
+        Container<? extends Weapon> weaponContainer = new Container<>(new Gun());
+        Weapon weapon = weaponContainer.getWeapon(); // Ожидаемый тип - Weapon
+        weapon.fire();  // Вызываем метод fire(), переопределенный в классе Gun
+        // weapon.reload(); // Ошибка компиляции, так как reload() не определен в классе Weapon
+    }
+}
+
+
+// Пример с контравариантностью: обработчик оружия
+interface WeaponHandler<T> {
+    void handle(T weapon);
+}
+
+class UniversalList<T> {
+    // Метод принимает делегат с контравариантным параметром
+    void processWeapons(WeaponHandler<? super T> handler) {
+        // Логика обработки оружия в списке
+    }
+}
+
+class Weapon {
+    public void fire() {
+        System.out.println("Выстрел из оружия");
+    }
+}
+
+class Gun extends Weapon {
+    @Override
+    public void fire() {
+        System.out.println("Выстрел из пистолета");
+    }
+
+    public void reload() {
+        System.out.println("Перезарядка пистолета");
+    }
+}
+
+public class ContravariantExample {
+    public static void main(String[] args) {
+        UniversalList<Weapon> weaponList = new UniversalList<>();
+
+        // Делегат, обрабатывающий оружие
+        WeaponHandler<Weapon> weaponHandler = weapon -> System.out.println("Обработка оружия");
+
+        // Мы можем использовать контравариантный делегат для обработки списка оружия, включая подтипы Weapon
+        weaponList.processWeapons(weaponHandler);
+
+        // Делегат, обрабатывающий пистолеты
+        WeaponHandler<Gun> gunHandler = gun -> {
+            System.out.println("Обработка пистолета");
+            gun.reload(); // Мы можем вызывать метод reload(), определенный только в классе Gun
+        };
+
+        // Мы также можем использовать контравариантный делегат для обработки списка оружия, включая подтипы Gun
+        weaponList.processWeapons(gunHandler);
+    }
+}
+
