@@ -1,0 +1,19 @@
+Решение задания 9.
+// Абстрактный базовый класс General
+abstract class General extends Object {
+    // Базовые операции
+    public abstract void copy(General other);
+    public abstract General clone();
+    public abstract boolean deepEquals(General other);
+    public abstract String serialize();
+    public abstract void deserialize(String data);
+    public abstract void print();
+    public abstract boolean isType(Class<?> type);
+    public abstract Class<?> getRealType();
+}
+// Класс Any, прямой потомок General
+class Any extends General {
+    public Any() {
+        super(); // Вызываем конструктор General
+    }
+}
