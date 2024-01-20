@@ -1,0 +1,51 @@
+Рефлексия задания 9.
+// Абстрактный базовый класс General
+abstract class General extends Object {
+    // Базовые операции
+    public abstract void copy(General other);
+    public abstract General clone();
+    public abstract boolean deepEquals(General other);
+    public abstract String serialize();
+    public abstract void deserialize(String data);
+    public abstract void print();
+    public abstract boolean isType(Class<?> type);
+    public abstract Class<?> getRealType();
+}
+// Класс Any, прямой потомок General
+class Any extends General {
+    public Any() {
+        super(); // Вызываем конструктор General
+    }
+}
+
+Ошибка в том, что явно наследуемся от Object. Все классы в Java наследуются от Object ибо все в Java есть объект.
+Проще говоря при создании класса, происходит не явное наследование от ПРАродителя.
+А вот Serializable дает возможность сохранить и потом прочитать объект.
+Применяя обобщения, мы обеспечиваем универсальность применения класса.
+
+Решение задания 10.
+Да, в Java имеется возможность запрета переопределения методов родителя в потомках,
+это применение модификатора final.
+
+class ParentClass {
+    public final void finalMethod() {
+        System.out.println("Это final метод в базовом классе.");
+    }
+}
+
+class SubClass extends ParentClass {
+    // Все методы класса BaseClass, включая finalMethod, доступны в SubClass
+    public void someMethod() {
+        finalMethod();  // Мы можем использовать finalMethod но не переопределять
+        System.out.println("Это другой метод в подклассе.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SubClass sub = new SubClass();
+        sub.someMethod();
+    }
+}
+
+
