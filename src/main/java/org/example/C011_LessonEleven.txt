@@ -1,0 +1,23 @@
+Рефлексия задания 10.
+// Решение верное
+
+
+Решение задания 11.
+class A {
+    void methodA() {
+        System.out.println("Method A");
+    }
+}
+
+class B {
+    void methodB() {
+        System.out.println("Method B");
+    }
+}
+
+class C extends A, B { // Это не допустимо в Java
+    // ...
+}
+ Мы не сможем замкнуть иерархию классом None снизу.
+
+

@@ -23,3 +23,5 @@ n
 0src/main/java/org/example/InsertionSortStep.java,5/8/580f90d0e5e048341038608d4ebddff188af351b
 \
 ,src/main/java/org/example/C006_LessonSix.txt,a/8/a8bfe75dd585f87679ffca88b6f3c504d46aab9c
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
