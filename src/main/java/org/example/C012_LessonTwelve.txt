@@ -1,0 +1,64 @@
+Рефлексия задания 11.
+// Если наследование линейное (у родителя один наследник), тогда замыкание снизу классом None происходит так:
+class General implements Serializable {
+   ...
+}
+
+class Any extends General { }
+
+...
+
+final class None extends Any /*A, B, ....*/ { }
+
+//
+
+class Test {
+    public static Any getSome() {
+        return new None();
+    }
+
+    public static void setSome(Any any) {
+        if (any instanceof None) {
+            System.out.println("wrong value!!!");
+        }
+    }
+}
+
+Решение задания 12.
+
+class General implements Serializable {
+    // Метод для попытки присваивания
+    public static void assignment_attempt(General target, General source) {
+        // Проверяем совместимость типов
+        if (target.getClass().isAssignableFrom(source.getClass())) {
+            // Присваивание успешно
+        } else {
+            // Присваивание не удалось, присваиваем Void
+            assignment_attempt(target, Void.getInstance());
+        }
+    }
+
+    // Перегруженный метод для присваивания Void
+    public static void assignment_attempt(General target, Void voidInstance) {
+        // Присваиваем Void
+        // Обработка случая присваивания Void (сообщение в логах)
+    }
+}
+
+class Any extends General {}
+
+class Void extends General {
+    // Реализация класса Void, если необходимо
+    private static final Void instance = new Void();
+
+    private Void() {
+        // Приватный конструктор
+    }
+
+    public static Void getInstance() {
+        return instance;
+    }
+}
+
+
+
