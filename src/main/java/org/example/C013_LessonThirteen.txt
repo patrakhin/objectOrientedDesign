@@ -1,0 +1,71 @@
+
+Решение задания 13.
+
+1. Метод публичен в родительском классе А и публичен в его потомке B:
+
+class A {
+    public void method() {
+        System.out.println("Public method in class A");
+    }
+}
+
+class B extends A {
+    @Override
+    public void method() {
+        System.out.println("Public method in class B");
+    }
+
+    public static void main(String[] args) {
+        B b = new B();
+        b.method(); // Вывод: Public method in class B
+    }
+}
+
+
+2. Метод публичен в родительском классе А и скрыт в его потомке B:
+class A {
+    public void method() {
+        System.out.println("Public method in class A");
+    }
+}
+
+class B extends A {
+    @Override
+    private void method() {
+        //не работает*
+    }
+*мы не можем уменьшать уровень доступа метода родительского класса
+
+
+3. Метод скрыт в родительском классе А и публичен в его потомке B:
+class A {
+    private void method() {
+        System.out.println("Private method in class A");
+    }
+}
+
+class B extends A {
+    @Override
+    public void method() {
+        //не работает @Override*
+    }
+*переопределяемый класс должен быть публичным, а переопределенный клаcс должен иметь одинаковую сигнатуру с переопределяемым.
+
+4. Метод скрыт в родительском классе А и скрыт в его потомке B:
+java
+class A {
+    private void method() {
+        System.out.println("Private method in class A");
+    }
+}
+
+class B extends A {
+    @Override
+    private void method() {
+        //и снова не работает @Override*
+    }
+
+*переопределяемый класс должен быть публичным
+
+
+
