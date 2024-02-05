@@ -27,7 +27,7 @@ n
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 ^
 .src/main/java/org/example/ParentHashTable.java,c/5/c581b8860c6d96bf7f0595bbfedc9cebba08c466
-S
-#src/main/java/org/example/Main.java,0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b
 [
 +src/main/java/org/example/BoundedStack.java,9/1/91f543c28331d26d49ae4ea3efaa0b1ebb913251
+g
+7src/main/java/org/example/С002_InheritanceExample.java,9/1/917cbbb7ffd97cd0ebd802b77c899d8b6822cccf

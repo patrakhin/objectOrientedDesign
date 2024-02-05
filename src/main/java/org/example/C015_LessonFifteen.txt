@@ -1,4 +1,5 @@
-package org.example;
+
+Решение задания 15.
 
 // Абстрактный класс Grandfather
 abstract class Grandfather {
@@ -59,3 +60,10 @@ public class Main {
         }
     }
 }
+
+
+
+
+
+
+
