@@ -31,3 +31,7 @@ n
 +src/main/java/org/example/BoundedStack.java,9/1/91f543c28331d26d49ae4ea3efaa0b1ebb913251
 g
 7src/main/java/org/example/С002_InheritanceExample.java,9/1/917cbbb7ffd97cd0ebd802b77c899d8b6822cccf
+^
+.src/main/java/org/example/C007_LessonSeven.txt,e/9/e9a4bf4504e38a096319bdeba928c1255d5e4247
+^
+.src/main/java/org/example/C003_LessonThree.txt,5/8/5860479d4a76d22395d6fb60b029d7c86fb73f19
