@@ -35,3 +35,5 @@ g
 .src/main/java/org/example/C007_LessonSeven.txt,e/9/e9a4bf4504e38a096319bdeba928c1255d5e4247
 ^
 .src/main/java/org/example/C003_LessonThree.txt,5/8/5860479d4a76d22395d6fb60b029d7c86fb73f19
+^
+.src/main/java/org/example/C008_LessonEight.txt,3/5/35b0ba7b6acecb6f56abb53be85390438ff753e7

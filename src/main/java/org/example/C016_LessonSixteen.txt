@@ -1,0 +1,79 @@
+
+Решение задания 16.
+
+// Пример полиморфного вызова метода (динамическое связывание):
+class Animal {
+    void makeSound() {
+        System.out.println("Some generic sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow");
+    }
+}
+
+public class PolimorfObject {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        myDog.makeSound();  // Динамическое связывание, вызывается метод makeSound() класса Dog
+        myCat.makeSound();  // Динамическое связывание, вызывается метод makeSound() класса Cat
+    }
+}
+
+//Пример ковариантного вызова метода :
+
+class Animal {
+    void makeSound() {
+        System.out.println("Some generic sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow");
+    }
+}
+
+public class CovarianceExample {
+    public static void main(String[] args) {
+        // Ковариантность с использованием списков
+        List<? extends Animal> animals;
+
+        // Создаем список кошек
+        List<Cat> cats = new ArrayList<>();
+        cats.add(new Cat());
+
+        // Кладем список кошек в список животных
+        animals = cats;
+
+        // Можем читать животных из списка без явного приведения типов
+        Animal animal = animals.get(0);
+        animal.makeSound();  // Выведет "Мяу"
+    }
+}
+
+
+
+
+
+
