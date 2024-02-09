@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 
 public class StreamChatGPT {
@@ -70,5 +71,12 @@ public class StreamChatGPT {
                 .orElse(0.0); // Возвращаем 0.0, если список пуст
 
         System.out.println("Средняя цена в долларах: " + averageDollarPrice);
+
+        List<String> words = Arrays.asList("apple", "banana", "grape", "melon", "peach");
+        double resultCalc = words.stream()
+                .filter(word -> word.length() > 3)
+                .mapToDouble(word -> Math.pow(word.length(), 2))
+                .reduce(0.0, Double::sum);
+        System.out.println("RESULT = " + resultCalc);
     }
 }
