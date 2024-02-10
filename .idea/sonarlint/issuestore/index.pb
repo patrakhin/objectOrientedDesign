@@ -43,3 +43,13 @@ _
 -src/main/java/org/example/C009_LessonNine.txt,8/5/85060c2d1ce2510431b21ac5fea5df46af653cf8
 ]
 -src/main/java/org/example/C0010_LessonTen.txt,6/d/6d23bc0b3ad0036bac082da2d5423118135e1741
+U
+%src/main/java/org/example/Vector.java,0/2/029a2aeb78f9b111c1ac36a502079bf18a6c16fd
+S
+#src/main/java/org/example/Main.java,0/b/0ba1b9c7a4878802f938e331cc2d8a042087ec6b
+_
+/src/main/java/org/example/C012_LessonTwelve.txt,1/5/15ebf14ea4b62510ac8228b71cd98d6525c97a82
+a
+1src/main/java/org/example/C013_LessonThirteen.txt,6/7/673d4832ba762378794d225e2b890d4858fda219
+a
+1src/main/java/org/example/C014_LessonFourteen.txt,1/b/1b09e5639f3dda41ee617e126502865bf3454920
