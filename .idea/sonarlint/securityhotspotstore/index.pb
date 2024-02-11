@@ -7,8 +7,6 @@ h
 -src/main/java/org/example/B002_LinkedList_sol,3/b/3b46b9e973502b39c4b569dacb83e2151fc2ee30
 h
 8src/main/java/org/example/B003_linkedList_Reflection.txt,d/2/d246add88eab51a2be2d2b814fc530026b22ae93
-f
-6src/main/java/org/example/B007_DynArray_Reflection.txt,7/4/74e122efd092c74d5ffbce41c96ebe4e51ef5e22
 o
 ?src/main/java/org/example/B001_TheCourseOfSolvingLinkedList.txt,6/6/665afce7c3570f50979a4846f835d70d1bf23406
 p

@@ -1,0 +1,99 @@
+
+Решение задания 17.
+
+Пример 1: Отношение "содержит" между классами "Библиотека" и "Книга".
+
+В данном случае, хотя "Библиотека" содержит в себе "Книги",
+это отношение не относится к "является". Библиотека не является видом книги,
+а местом, где хранятся (содержатся) и предоставляются книги.
+
+class Book {
+    private String title;
+
+    Book(String title) {
+        this.title = title;
+    }
+
+    void read() {
+        System.out.println("Reading the book: " + title);
+    }
+}
+
+class Library {
+    private List<Book> bookCollection = new ArrayList<>();
+
+    void addBook(Book book) {
+        bookCollection.add(book);
+    }
+
+    void provideBook() {
+        if (!bookCollection.isEmpty()) {
+            Book book = bookCollection.remove(0);
+            book.read();
+        } else {
+            System.out.println("No available books");
+        }
+    }
+}
+
+public class ContainsRelationshipLibrary {
+    public static void main(String[] args) {
+        Library library = new Library();
+
+        Book book1 = new Book("Master and Margarita");
+        Book book2 = new Book("Crime and Punishment");
+
+        library.addBook(book1);
+        library.addBook(book2);
+
+        library.provideBook();  // Читаем книгу: Мастер и Маргарита
+        library.provideBook();  // Читаем книгу: Преступление и наказание
+        library.provideBook();  // Нет доступных книг
+    }
+}
+
+
+
+Пример 2: Отношение "содержит" между классами "Компьютер" и "Процессор".
+Здесь "Компьютер" содержит в себе "Процессор", но это не означает,
+что "Компьютер" является видом "Процессора".
+Компьютер имеет процессор, но это разные аспекты компьютера и процессора.
+
+class Processor {
+    void performCalculations() {
+        System.out.println("Performing calculations");
+    }
+}
+
+class Computer {
+    private Processor processor;
+
+    void setProcessor(Processor processor) {
+        this.processor = processor;
+    }
+
+    void runCalculations() {
+        if (processor != null) {
+            processor.performCalculations();
+        } else {
+            System.out.println( "Компьютер не может запустить вычисления, так как не установлен процессор");
+        }
+    }
+}
+
+public class ContainsRelationshipComputer {
+    public static void main(String[] args) {
+        Computer computer = new Computer();
+        Processor processor = new Processor();
+
+        computer.setProcessor(processor);
+        computer.runCalculations();  // Выполняем вычисления
+    }
+}
+
+
+
+
+
+
+
