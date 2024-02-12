@@ -172,6 +172,12 @@ public class StreamChatGPT {
         sortedNumbers.forEach(System.out::println);
 
 
+        List<String> rawWords = Arrays.asList("apple", "orange", "banana", "grape", "melon", "kiwi", "pear");
+        List<String> endFiltList = rawWords.stream()
+                .sorted(Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder()))
+                .toList();
+        System.out.println("endFiltList = " + endFiltList);
+
     }
 }
 
