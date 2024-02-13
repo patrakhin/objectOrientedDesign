@@ -178,6 +178,14 @@ public class StreamChatGPT {
                 .toList();
         System.out.println("endFiltList = " + endFiltList);
 
+
+        List<String> countryName = Arrays.asList( "France", "Germany", "Italy", "Canada", "United States", "Australia");
+        List<String> filtCountry = countryName.stream()
+                .sorted(Comparator.naturalOrder())
+                .sorted(Comparator.comparingInt(String::length))
+                .toList();
+        System.out.println("filtCountry = " + filtCountry);
+
     }
 }
 
