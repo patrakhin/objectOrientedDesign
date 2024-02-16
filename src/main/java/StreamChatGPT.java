@@ -186,6 +186,18 @@ public class StreamChatGPT {
                 .toList();
         System.out.println("filtCountry = " + filtCountry);
 
+        // Добавление отладочного вывода с использованием peek():
+        List<String> fruits = Arrays.asList("apple", "banana", "orange", "grape");
+
+        List<String> filteredFruits = fruits.stream()
+                .filter(fruit -> fruit.length() > 5)
+                .peek(filtFrut-> System.out.println("Filtered Fruits " + filtFrut))
+                .map(String::toUpperCase)
+                .peek(upperedCase -> System.out.println("Upper Case "+ upperedCase))
+                .toList();
+        System.out.println("filteredFruits = " + filteredFruits);
+
+
     }
 }
 
