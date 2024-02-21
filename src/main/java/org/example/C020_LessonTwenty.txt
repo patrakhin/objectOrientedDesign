@@ -1,0 +1,85 @@
+
+Решение задания 20.
+
+Наследование с функциональной вариацией.
+Рассмотрим класс Animal с методом makeSound(),
+а затем создадим подтипы Dog и Cat, переопределяя метод makeSound().
+
+class Animal {
+    void makeSound() {
+        System.out.println("Some generic animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Woof!");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Meow!");
+    }
+}
+
+Здесь Dog и Cat предоставляют функциональную вариацию метода makeSound() в зависимости от конкретного подтипа.
+
+
+
+Наследование с вариацией типа.
+
+Рассмотрим класс Calculator с методом calculate(int a, int b),
+а затем создадим подтипы, перегружая метод calculate для различных типов аргументов.
+
+class Calculator {
+    int calculate(int a, int b) {
+        return a + b;
+    }
+}
+
+class DoubleCalculator extends Calculator {
+    double calculate(double a, double b) {
+        return a + b;
+    }
+}
+
+class StringCalculator extends Calculator {
+    String calculate(String a, String b) {
+        return a + b;
+    }
+}
+
+Здесь DoubleCalculator и StringCalculator предоставляют вариацию типа для метода calculate,
+позволяя работать с разными типами данных.
+
+
+
+Структурное наследование.
+
+Рассмотрим интерфейс Sortable , который добавляет операции для сравнения элементов в списке,
+и создадим подтип SortedList, который реализует сравнение элементов для сортировки.
+
+interface Sortable<T> {
+    boolean isLessThan(T other);
+    boolean isEqualTo(T other);
+}
+
+class SortedList<T extends Sortable<T>> {
+    private List<T> elements;
+
+    // Реализация методов сортировки, используя операции из интерфейса Sortable
+}
+
+Здесь SortedList использует структурное наследование, добавляя новую абстракцию Sortable,
+которая вносит требования наличия операций сравнения для элементов списка.
+
+
+
+
+
+
+
+

@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -197,9 +198,67 @@ public class StreamChatGPT {
                 .toList();
         System.out.println("filteredFruits = " + filteredFruits);
 
+        //У вас есть список целых чисел. Используйте distinct(), чтобы получить список уникальных чисел.
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 2, 4, 5, 1);
+        List<Integer> filteredNumbers = numbers.stream()
+                .distinct()
+                .toList();
+        System.out.println("filteredNumbers " + filteredNumbers);
+
+        //У вас есть список строк с повторяющимися значениями. Используйте distinct(), чтобы получить список уникальных строк.
+        List<String> strings = Arrays.asList("apple", "banana", "orange", "banana", "grape");
+        List<String> distinctStrings = strings.stream()
+                .distinct()
+                .toList();
+        System.out.println("distinctStrings " + distinctStrings);
+
+        //У вас есть список объектов, каждый из которых содержит поле с именем.
+        // Используйте distinct(), чтобы получить список уникальных имен.
+        List<Person> people = Arrays.asList(
+                new Person("John"),
+                new Person("Alice"),
+                new Person("John"),
+                new Person("Bob")
+        );
+        List<Person> uniquePerson = people.stream()
+                .distinct()
+                .toList();
+        uniquePerson.forEach(person -> System.out.println(person.getName()));
+
+        //У вас есть список строк с числами и буквами. Отфильтруйте только те строки,
+        // которые содержат только цифры. Затем преобразуйте каждую строку в число и найдите сумму этих чисел.
+        List<String> mixedStrings = Arrays.asList("123", "abc", "45", "789", "xyz");
+        Optional<Integer> filteredStrings = mixedStrings.stream()
+                .filter(mixString -> mixString.matches("\\d+"))
+                .map(Integer::parseInt)
+                .reduce(Integer::sum);
+        filteredStrings.ifPresent(value -> System.out.println("value " + value));
+
+        //У вас есть список заказов, каждый из которых содержит список продуктов.
+        // Найдите общее количество уникальных тегов для всех продуктов во всех заказах.
+        // Выведите на печать список этих тегов в алфавитном порядке.
+        /*OtherOrder order1a = new Order(Arrays.asList("apple", "banana", "orange"));
+        Order order2a = new Order(Arrays.asList("banana", "grape"));
+        Order order3a = new Order(Arrays.asList("apple", "kiwi", "pear"));
+
+        List<Order> allOrders = Arrays.asList(order1, order2, order3);*/
+
 
     }
 }
+
+class Person{
+    private String name;
+
+    public Person(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+}
+
 
 class ObjectWithColors {
     private List<String> colors;
@@ -236,5 +295,15 @@ class Order{
 
     public List<Product> getProducts() {
         return products;
+    }
+}
+
+class OtherOrder{
+    private List<String> products;
+    public OtherOrder(List<String> products){
+        this.products = products;
+    }
+    public List<String> getProducts(){
+        return this.products;
     }
 }
