@@ -237,11 +237,11 @@ public class StreamChatGPT {
         //У вас есть список заказов, каждый из которых содержит список продуктов.
         // Найдите общее количество уникальных тегов для всех продуктов во всех заказах.
         // Выведите на печать список этих тегов в алфавитном порядке.
-        /*OtherOrder order1a = new Order(Arrays.asList("apple", "banana", "orange"));
-        Order order2a = new Order(Arrays.asList("banana", "grape"));
-        Order order3a = new Order(Arrays.asList("apple", "kiwi", "pear"));
+        OtherOrder order1a = new Order(Arrays.asList("apple", "banana", "orange"));
+        OtherOrder order2a = new Order(Arrays.asList("banana", "grape"));
+        OtherOrder order3a = new Order(Arrays.asList("apple", "kiwi", "pear"));
 
-        List<Order> allOrders = Arrays.asList(order1, order2, order3);*/
+        List<Order> allOrders = Arrays.asList(order1, order2, order3);
 
 
     }
