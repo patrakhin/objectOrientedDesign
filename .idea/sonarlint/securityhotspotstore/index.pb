@@ -55,3 +55,15 @@ f
 6src/main/java/org/example/B007_DynArray_Reflection.txt,7/4/74e122efd092c74d5ffbce41c96ebe4e51ef5e22
 `
 0src/main/java/org/example/C015_LessonFifteen.txt,d/e/de558a96ad35cdd5db62faa989b33f3ffe726728
+a
+1src/main/java/org/example/C019_LessonNineteen.txt,1/1/11935541c3b76e0d833e67ffb42362209a1ff1cd
+a
+1src/main/java/org/example/C018_LessonEighteen.txt,c/4/c46bf3aad4b676b13f8c0cb99953ae22257748a0
+_
+/src/main/java/org/example/C020_LessonTwenty.txt,0/7/07a68cf6765b272e9f63c673440f1d481207bf90
+o
+?src/main/java/org/example/B012_HashTable_TheCourseOfSolving.txt,6/9/69a25af74c53398157f493a335add905d26ffe4c
+b
+2src/main/java/org/example/C017_LessonSeventeen.txt,9/d/9d1501b7056f7e05fdecdc45a3e68b1801113f75
+`
+0src/main/java/org/example/PolimorfObjectjava.txt,d/b/dbed4fabfee7a1b1ea21cfc04fb22308752fd665

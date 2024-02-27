@@ -1,0 +1,89 @@
+
+Решение задания 22.
+
+Например, у нас есть иерархия классов, представляющих сотрудников в организации.
+Где каждый сотрудник имеет свою должность и трудовой договор.
+
+// Родительский класс Договор
+class Agreement {
+    // Общие свойства соглашения
+}
+
+// Иерархия классов для Договора по типу
+class PermanentAgreement extends Agreement {
+    // Реализация для постоянных сотрудников
+}
+
+class ContractorAgreement extends Agreement {
+    // Реализация для наемных сотрудников
+}
+
+// Родительский класс Должность
+class Position {
+    // Общие свойства должности
+}
+
+// Иерархия классов для Должности по типу
+class ManagerPosition extends Position {
+    // Реализация для менеджеров
+}
+
+class DeveloperPosition extends Position {
+    // Реализация для разработчиков
+}
+
+// Родительский класс Сотрудник
+class Employee {
+    private String name;
+    private Position position;
+    private Agreement agreement;
+
+    // Конструктор и методы доступа
+
+    void performJobDuties() {
+        System.out.println("Выполняются общие обязанности сотрудника");
+    }
+
+    void signAgreement() {
+        System.out.println("Сотрудник подписывает договор");
+    }
+
+    void displayPosition() {
+        System.out.println("Сотрудник занимает должность: " + position.getClass().getSimpleName());
+    }
+}
+
+// Иерархия классов для Сотрудника по типу
+class PermanentEmployee extends Employee {
+    // Реализация для постоянных сотрудников
+}
+
+class ContractorEmployee extends Employee {
+    // Реализация для наемных сотрудников
+}
+
+public class OrganizationExample {
+    public static void main(String[] args) {
+        // Создаем экземпляры сотрудников с разными должностями и договорами
+        PermanentEmployee permanentEmployee = new PermanentEmployee();
+        permanentEmployee.signAgreement();
+        permanentEmployee.displayPosition();
+
+        ContractorEmployee contractorEmployee = new ContractorEmployee();
+        contractorEmployee.signAgreement();
+        contractorEmployee.displayPosition();
+    }
+}
+Здесь мы использовали наследование вида,
+чтобы создать иерархии для договоров (PermanentAgreement, ContractorAgreement) и должностей (ManagerPosition, DeveloperPosition).
+Классы PermanentEmployee и ContractorEmployee наследуются от Employee
+и включают в себя конкретные реализации договоров и должностей для постоянных и наемных сотрудников соответственно.
+Таким образом, мы можем классифицировать сотрудников по типу договора и должности, что отражает наследование вида.
+
+
+
+
+
+
+
+
