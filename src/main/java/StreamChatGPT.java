@@ -237,11 +237,53 @@ public class StreamChatGPT {
         //У вас есть список заказов, каждый из которых содержит список продуктов.
         // Найдите общее количество уникальных тегов для всех продуктов во всех заказах.
         // Выведите на печать список этих тегов в алфавитном порядке.
-       /* OtherOrder order1a = new Order(Arrays.asList("apple", "banana", "orange"));
-        OtherOrder order2a = new Order(Arrays.asList("banana", "grape"));
-        OtherOrder order3a = new Order(Arrays.asList("apple", "kiwi", "pear"));
 
-        List<Order> allOrders = Arrays.asList(order1, order2, order3);*/
+        // Создаем несколько продуктов с тегами
+        ProductTwo productTwo1 = new ProductTwo("Laptop", Arrays.asList("electronics", "computers"));
+        ProductTwo productTwo2 = new ProductTwo("Headphones", Arrays.asList("electronics", "audio"));
+        ProductTwo productTwo3 = new ProductTwo("Book", Arrays.asList("literature"));
+        ProductTwo productTwo4 = new ProductTwo("Smartphone", Arrays.asList("electronics", "phones"));
+
+        // Создаем несколько заказов с продуктами
+        OrderTwo orderTwo1 = new OrderTwo(Arrays.asList(productTwo1, productTwo2, productTwo3));
+        OrderTwo orderTwo2 = new OrderTwo(Arrays.asList(productTwo2, productTwo4));
+        OrderTwo orderTwo3 = new OrderTwo(Arrays.asList(productTwo3, productTwo4, productTwo1));
+
+        List<OrderTwo> allOrdersTwo = Arrays.asList(orderTwo1, orderTwo2, orderTwo3);
+
+        List<String> uniqueTags = allOrdersTwo.stream()
+                .flatMap(allOrderTwo -> allOrderTwo.getProducts().stream())
+                .flatMap(product -> product.getTags().stream())
+                .distinct()
+                .sorted()
+                .toList();
+        System.out.print(String.join(", ", uniqueTags));
+        System.out.println("");
+        System.out.println("********************");
+
+        //У вас есть список людей с именами и возрастом.
+        // Отфильтруйте людей старше 25 лет, затем найдите средний возраст этих людей.
+        // Выведите на печать имена людей, старше 25 лет, в алфавитном порядке.
+
+        //Список людей
+        List<PersonThree> peopleThree = Arrays.asList(
+                new PersonThree("Alice", 28),
+                new PersonThree("Bob", 22),
+                new PersonThree("Charlie", 30),
+                new PersonThree("David", 25)
+        );
+        List<String> selectList = peopleThree.stream()
+                .filter(personThree -> personThree.getAge() > 25)
+                .map(personThree -> personThree.getName())
+                .toList();
+        System.out.println(String.join(", ",selectList));
+
+        double averageAgePeoples = peopleThree.stream()
+                .filter(personThree -> personThree.getAge() > 25)
+                .mapToDouble(PersonThree :: getAge)
+                .average()
+                .orElse(0.0);
+        System.out.println("AVG age = "+averageAgePeoples);
 
 
     }
@@ -256,6 +298,24 @@ class Person{
 
     public String getName(){
         return this.name;
+    }
+}
+
+class PersonThree{
+    private String name;
+    private int age;
+
+    public PersonThree(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
 
@@ -298,12 +358,48 @@ class Order{
     }
 }
 
-class OtherOrder{
-    private List<String> products;
-    public OtherOrder(List<String> products){
-        this.products = products;
+class ProductTwo {
+    private String name;
+    private List<String> tags;
+
+    public ProductTwo(String name, List<String> tags) {
+        this.name = name;
+        this.tags = tags;
     }
-    public List<String> getProducts(){
-        return this.products;
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", tags=" + tags +
+                '}';
     }
 }
+
+class OrderTwo {
+    private List<ProductTwo> products;
+
+    public OrderTwo (List<ProductTwo> products) {
+        this.products = products;
+    }
+
+    public List<ProductTwo> getProducts() {
+        return products;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "products=" + products +
+                '}';
+    }
+}
+
