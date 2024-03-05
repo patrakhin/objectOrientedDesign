@@ -285,7 +285,68 @@ public class StreamChatGPT {
                 .orElse(0.0);
         System.out.println("AVG age = "+averageAgePeoples);
 
+        //У вас есть список строк.
+        // Выведите каждую строку в верхнем регистре с использованием peek(), после чего соберите результат в список.
+        List<String> wordsList = Arrays.asList("apple", "banana", "orange", "grape");
+        List<String> sortList = wordsList.stream()
+                .map(String::toUpperCase)
+                .peek(word -> System.out.println("UpperCase "+word))
+                .map(String::toLowerCase)
+                .toList();
+        System.out.println("result "+sortList);
 
+        //У вас есть список чисел. Отфильтруйте только положительные числа,
+        // и для каждого положительного числа выведите его значение в квадрате с использованием peek().
+        // Затем соберите результат в список.
+        List<Integer> anyNumbers = Arrays.asList(-2, 5, -8, 10, 3, -6);
+        List<Double> sortNumbers = anyNumbers.stream()
+                .filter(number -> number > 0)
+                .map(num -> Math.pow(num,2))
+                .peek(num -> System.out.println("POW result "+num))
+                .toList();
+        System.out.println("End result "+ sortNumbers);
+
+        //У вас есть список людей. Выведите имена всех людей, чьи имена начинаются с буквы "A",
+        // с использованием peek(). Затем соберите результат в список.
+        List<PersonThree> peoplePeek = Arrays.asList(
+                new PersonThree("Alice", 28),
+                new PersonThree("Bob", 22),
+                new PersonThree("Charlie", 30),
+                new PersonThree("David", 25)
+        );
+        List<String> endPeek = peoplePeek.stream()
+                .filter(person -> person.getName().startsWith("A"))
+                .peek(pers -> System.out.println("Name "+pers.getName()))
+                .map(PersonThree::getName)
+                .toList();
+        System.out.println("Name start with A "+endPeek);
+
+        //У вас есть список слов. Найдите первое слово, которое содержит букву "a" и имеет длину больше 3.
+        List<String> wordsForSearch = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+        Optional<String> foundWords = wordsForSearch.stream()
+                .filter(word -> word.contains("a") && word.length() > 3)
+                .findFirst();
+        foundWords.ifPresent(System.out::println);
+
+        //У вас есть список чисел. Найдите первое положительное четное число.
+        List<Integer> numbersForSearch = Arrays.asList(-2, 5, -8, 10, 3, -6);
+        Optional<Integer> foundNumber = numbersForSearch.stream()
+                .filter(num -> num > 0 && num % 2 == 0)
+                .findFirst();
+        foundNumber.ifPresent(System.out::println);
+
+        //У вас есть список людей.
+        // Найдите первого человека, чье имя начинается с буквы "B" и возраст больше 25.
+        List<PersonThree> peopleForFirst = Arrays.asList(
+                new PersonThree("Alice", 28),
+                new PersonThree("Bob", 47),
+                new PersonThree("Charlie", 30),
+                new PersonThree("David", 25)
+        );
+        Optional<PersonThree> foundFirst = peopleForFirst.stream()
+                .filter(found -> found.getName().startsWith("B") && found.getAge() > 25)
+                .findFirst();
+        foundFirst.ifPresent(men -> System.out.println("Name: "+men.getName()+" Age: "+men.getAge()));
     }
 }
 
