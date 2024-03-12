@@ -347,6 +347,42 @@ public class StreamChatGPT {
                 .filter(found -> found.getName().startsWith("B") && found.getAge() > 25)
                 .findFirst();
         foundFirst.ifPresent(men -> System.out.println("Name: "+men.getName()+" Age: "+men.getAge()));
+
+        //У вас есть список списков целых чисел. Используйте flatMap(), чтобы получить один поток целых чисел.
+        List<List<Integer>> listOfLists = Arrays.asList(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList(4, 5, 6),
+                Arrays.asList(7, 8, 9)
+        );
+        List<Integer> resList = listOfLists.stream()
+                .flatMap(List::stream)
+                .toList();
+        System.out.println("List of numbers" + resList);
+
+        //У вас есть список строк, представляющих слова в предложениях.
+        // Используйте flatMap(), чтобы получить список слов из всех предложений.
+        List<String> sentences = Arrays.asList(
+                "Hello world",
+                "How are you",
+                "Java is awesome"
+        );
+        List<String> allWords = sentences.stream()
+                .map(sentence->sentence.split("\\s+"))
+                .flatMap(Arrays::stream)
+                .toList();
+        System.out.println("List of words" + allWords);
+
+        //У вас есть список заказов, каждый из которых содержит список продуктов.
+        // Используйте flatMap(), чтобы получить список всех продуктов из всех заказов.
+        List<OrderThree> ordersThree = Arrays.asList(
+                new OrderThree(Arrays.asList(new ProductThree("Laptop"), new ProductThree("Phone"))),
+                new OrderThree(Arrays.asList(new ProductThree("Headphones"), new ProductThree("Tablet"))),
+                new OrderThree(Arrays.asList(new ProductThree("Mouse"), new ProductThree("Keyboard")))
+        );
+        List<ProductThree> listOfOrders = ordersThree.stream()
+                .flatMap(order->order.getProductThrees().stream())
+                .toList();
+        listOfOrders.forEach(listOrder -> System.out.println(listOrder.getName()));
     }
 }
 
@@ -464,3 +500,26 @@ class OrderTwo {
     }
 }
 
+class ProductThree{
+    private String name;
+
+    public ProductThree(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+class OrderThree{
+    private List<ProductThree> productThrees;
+
+    public OrderThree(List<ProductThree> productThree){
+        this.productThrees = productThree;
+    }
+
+    public List<ProductThree> getProductThrees() {
+        return productThrees;
+    }
+}

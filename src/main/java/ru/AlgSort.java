@@ -1,23 +1,16 @@
 package ru;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class AlgSort {
     public static void bubblesSort(int[] array){
-        boolean swap;
-        for (int i = 0; i < array.length - 1; i++){
-            swap = false;
-            for (int j = 0; j < array.length - 1 - i; j++){
+        for(int i =0; i < array.length-1; i++){
+            for (int j = 0; j < array.length-1-i; j++){
                 if (array[j] > array[j+1]){
                     int temp = array[j];
                     array[j] = array[j+1];
                     array[j+1] = temp;
-
-                    swap = true;
                 }
-            }
-            if (!swap){
-                break;
             }
         }
     }
@@ -26,7 +19,7 @@ public class AlgSort {
         for (int i = 0; i < array.length; i++){
             int pos = i;
             int min = array[i];
-            for (int j = i+1; j < array.length; j++){
+            for (int j = i+1; j < array.length-1; j++){
                 if (array[j] < min){
                     pos = j;
                     min = array[j];
@@ -37,30 +30,58 @@ public class AlgSort {
         }
     }
 
-    public static void insertSort (int[] array){
-        for (int i = 1; i < array.length; i++) {
-            int key = array[i];
+    public static int findKthSmallest(int[] array, int k){
+        if (array == null || k > array.length){
+            throw new IllegalArgumentException("Массив пуст или k больше размера массива.");
+        }
+        selectSort(array);
+        return array[k-1];
+    }
+
+    public static void insertSort (String[] array){
+        for (int i = 1; i < array.length; i++){
+            String key = array[i];
             int j;
-            for (j = i - 1; j >= 0 && array[j] > key; j--) {
-                array[j + 1] = array[j];
+            for (j=i-1; j>= 0 && array[j].compareTo(key) > 0;j--){
+                array[j+1] = array[j];
             }
-            array[j + 1] = key;
+            array[j+1] = key;
         }
     }
 
+    public static List<String> sortWords(List<String> anyList){
+        return anyList.stream()
+                .sorted()
+                .toList();
+    }
+
+    public static List<Integer> getSort(List<Integer> numbers){
+        return  numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .toList();
+    }
 
     public static void main(String[] args) {
-        int[] bubbleArray = {2, 7, 1, 6, 5, 4, 3};
+        //У вас есть массив целых чисел, и вам нужно отсортировать его в порядке неубывания.
+        int[] bubbleArray = {64, 34, 25, 12, 22, 11, 90};
         bubblesSort(bubbleArray);
         System.out.println(Arrays.toString(bubbleArray));
         System.out.println("*********");
-        int[] selectArray = {2,4,6,8,1,3,5,7};
-        selectSort(selectArray);
-        System.out.println(Arrays.toString(selectArray));
+        List<Integer> anyNumbers = Arrays.asList(64, 34, 25, 12, 22, 11, 90);
+        System.out.println(getSort(anyNumbers));
         System.out.println("*********");
-        int[] insertArray = {6,8,1,3,5,7};
+        //Дан массив целых чисел, требуется найти k-ый наименьший элемент в массиве.
+        int[] selectArray = {12, 3, 7, 19, 5};
+        int k = 2; // Найти второй наименьший элемент
+        System.out.println(findKthSmallest(selectArray, k));
+        System.out.println("*********");
+        //Дан массив строк, и вам нужно отсортировать его в лексикографическом порядке (по алфавиту)
+        String[] insertArray = {"apple", "banana", "orange", "kiwi", "grape"};
         insertSort(insertArray);
         System.out.println(Arrays.toString(insertArray));
         System.out.println("*********");
+        //Дан массив строк, и вам нужно отсортировать его в лексикографическом порядке (по алфавиту)
+        List<String> listWords = Arrays.asList("apple", "banana", "orange", "kiwi", "grape", "cola", "water");
+        System.out.println(sortWords(listWords));
     }
 }
