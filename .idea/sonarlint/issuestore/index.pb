@@ -67,3 +67,5 @@ b
 2src/main/java/org/example/C017_LessonSeventeen.txt,9/d/9d1501b7056f7e05fdecdc45a3e68b1801113f75
 `
 0src/main/java/org/example/PolimorfObjectjava.txt,d/b/dbed4fabfee7a1b1ea21cfc04fb22308752fd665
+d
+4src/main/java/org/example/C024_LessonTwenty_four.txt,b/a/ba7954a8cf2a6ad6714e8db19ab5ce0993b23c3c

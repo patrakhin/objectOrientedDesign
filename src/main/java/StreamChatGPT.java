@@ -383,6 +383,7 @@ public class StreamChatGPT {
                 .flatMap(order->order.getProductThrees().stream())
                 .toList();
         listOfOrders.forEach(listOrder -> System.out.println(listOrder.getName()));
+
     }
 }
 
