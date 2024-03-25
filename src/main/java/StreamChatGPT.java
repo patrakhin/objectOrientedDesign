@@ -384,6 +384,52 @@ public class StreamChatGPT {
                 .toList();
         listOfOrders.forEach(listOrder -> System.out.println(listOrder.getName()));
 
+        //Фильтрация и преобразование: У вас есть список пользователей.
+        // Необходимо отфильтровать пользователей, чей возраст больше 18 лет,
+        // затем преобразовать их имена в верхний регистр и собрать результат в новый список.
+        List<User> users = Arrays.asList(
+                new User("John", 20),
+                new User("Alice", 18),
+                new User("Bob", 30)
+        );
+        List <String> filteredList = users.stream()
+                .filter(user->user.getAge() > 18)
+                .map(user->user.getName().toUpperCase())
+                .toList();
+        System.out.println("List of users " + filteredList);
+
+        //Агрегация данных: У вас есть список заказов с товарами и их стоимостью.
+        //Необходимо найти среднюю стоимость товаров в каждом заказе и вывести список средних стоимостей.
+        List<Orderx> orderx = Arrays.asList(
+                new Orderx(Arrays.asList(new Productx("Laptop", 1000), new Productx("Phone", 500))),
+                new Orderx(Arrays.asList(new Productx("Headphones", 100), new Productx("Tablet", 800)))
+        );
+
+        orderx.stream()
+                .mapToDouble(order -> order.getProducts().stream().mapToInt(Productx::getPrice).average().orElse(0.0))
+                .forEach(System.out::println);
+
+        //Группировка и подсчет: У вас есть список продуктов с их категориями.
+        //Необходимо сгруппировать продукты по категориям и для каждой категории посчитать количество продуктов в ней.
+
+        List<Productp> productsp = Arrays.asList(
+                new Productp("Laptop", "Electronics"),
+                new Productp("Phone", "Electronics"),
+                new Productp("Book", "Books"),
+                new Productp("Headphones", "Electronics"),
+                new Productp("Tablet", "Electronics"),
+                new Productp("Keyboard", "Electronics"),
+                new Productp("Mouse", "Electronics"),
+                new Productp("Chair", "Furniture"),
+                new Productp("Desk", "Furniture")
+        );
+
+        Map <String, Long> groupProd = productsp.stream()
+                .collect(Collectors.groupingBy(Productp::getCategory, Collectors.counting()));
+        System.out.println("groupProd " + groupProd);
+
+
+
     }
 }
 
@@ -522,5 +568,63 @@ class OrderThree{
 
     public List<ProductThree> getProductThrees() {
         return productThrees;
+    }
+}
+
+class User {
+    private String name;
+    private int age;
+
+    public User(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+class Orderx {
+    private List<Productx> products;
+
+    public Orderx(List<Productx> products) {
+        this.products = products;
+    }
+
+    public List<Productx> getProducts() {
+        return products;
+    }
+}
+
+class Productx {
+    private String name;
+    private int price;
+
+    public Productx(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+}
+
+class Productp {
+    private String name;
+    private String category;
+
+    public Productp(String name, String category) {
+        this.name = name;
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }
