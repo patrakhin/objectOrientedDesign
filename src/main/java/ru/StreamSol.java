@@ -1,6 +1,7 @@
 package ru;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -51,6 +52,115 @@ public class StreamSol {
                 .collect(Collectors.groupingBy(ProductTwo::getCategory, Collectors.counting()));
         System.out.println(" group by category " + groupByCategory);
         System.out.println(" group by category " + groupByCategory.values());
+
+        //Фильтрация и преобразование:
+        //Задача 1:
+        // Отфильтровать список чисел так, чтобы остались только числа больше 10,
+        //затем умножить каждое число на 2 и получить сумму всех результатов.
+        List<Integer> numbers = Arrays.asList(5, 12, 8, 17, 6, 21);
+        Double endResult = numbers.stream()
+                .filter(num -> num > 10) //interim operation
+                .mapToDouble(nums -> nums * 2)//interim operation
+                .sum(); //terminal operation
+        System.out.println(endResult);
+
+        //Задача 2:
+        // Из списка строк выбрать только те, которые начинаются с буквы "A"
+        // и преобразовать их в верхний регистр.
+        List<String> words = Arrays.asList("apple", "banana", "orange", "Ant", "apricot");
+        List<String> resultList = words.stream()
+                .filter(word -> word.startsWith("A"))
+                .map(String::toUpperCase)
+                .toList();
+        System.out.println("result " + resultList);
+
+        //Задача 3:
+        //Отфильтровать список людей по возрасту > 20 и преобразовать их в другой тип объектов (вывести список имен).
+        List<Person> people = Arrays.asList(
+                new Person("Alice", 25),
+                new Person("Bob", 30),
+                new Person("Charlie", 20)
+        );
+        List<String> listOfName = people.stream() //interim operation
+                .filter(men -> men.getAge() > 20)  //interim operation
+                .map(Person::getName) //interim operation
+                .toList(); //terminal operation
+        System.out.println("New List " + listOfName);
+
+        //Агрегация данных:
+        //Задача 1:
+        //Найти среднее значение списка чисел.
+        List<Integer> numbersTwo = Arrays.asList(5, 10, 15, 20, 25);
+        double endResultTwo = numbersTwo.stream()
+                .mapToDouble(num -> num)
+                .average() //terminal operation
+                .orElse(0.0); //terminal operation
+        System.out.println("average nums " + endResultTwo);
+
+        //Задача 2:
+        //Найти максимальное значение в списке строк по их длине.
+        List<String> wordsTwo = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+        int maxValue = wordsTwo.stream()
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
+        System.out.println("max value " + maxValue);
+
+        //Задача 3:
+        //Посчитать общую сумму стоимости всех продуктов в списке.
+        List<Product> products = Arrays.asList(
+                new Product("Laptop", 1000),
+                new Product("Smartphone", 800),
+                new Product("Tablet", 500)
+        );
+        int totalPrice = products.stream()
+                .mapToInt(Product::getPrice) //interim operation
+                .sum(); //terminal operation
+        System.out.println("total price " + totalPrice);
+
+        //остортировать по возрастанию
+        List<Integer> numbersThree = Arrays.asList(10, 5, 20, 25, 15);
+        List<Integer> end = numbersThree.stream()
+                .sorted().toList();
+        System.out.println(end);
+
+        //остортировать по убыванию
+        List<Integer> numbersOne = Arrays.asList(10, 5, 20, 25, 15);
+        List<Integer> endOne = numbersOne.stream()
+                .sorted(Comparator.reverseOrder()).toList();
+        System.out.println(endOne);
+
+        //Группировка и подсчет:
+        //Задача 1:
+        //Подсчитать количество слов разной длины в списке строк.
+
+        List<String> wordsOne = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+        Map<Integer,Long> wordsCount = wordsOne.stream()
+                        .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+        System.out.println("result " + wordsCount);
+
+        //Задача 2:
+        //Сгруппировать объекты по возрастной группе и подсчитать количество объектов в каждой группе.
+
+        List<Person> peopleOne = Arrays.asList(
+                new Person("Alice", 25),
+                new Person("Bob", 30),
+                new Person("Charlie", 25),
+                new Person("David", 30)
+        );
+        Map<Integer,Long> numberOfPeople = peopleOne.stream()
+                .collect(Collectors.groupingBy(Person::getAge, Collectors.counting()));
+        System.out.println(" numbers of people " + numberOfPeople);
+
+        //Задача 3:
+        //Группировка элементов по длине их названия, а затем вывод только первых двух элементов из каждой группы.
+        List<String> fruits = Arrays.asList("apple", "banana", "orange", "kiwi", "grape", "melon");
+        Map<Integer, List<String>> groupAndOut = fruits.stream()
+                .collect(Collectors.groupingBy(String::length));
+        groupAndOut.forEach((length, list) ->{
+            List<String> firstTwo = list.stream().limit(2).toList();
+            System.out.println("Слова длины " + length + ": " + firstTwo);
+        });
 
 
     }
@@ -111,5 +221,23 @@ class ProductTwo {
 
     public String getCategory() {
         return category;
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    public Person (String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
